@@ -1,0 +1,76 @@
+{
+  "_说明": "候选源清单。自愈脚本定时探测这些源，健康的写入 config.json。priority 越小越优先；电视端只填最终 config.json 的 raw 地址。2026-11-23 经 agent 编队审查 + 实测修订。",
+  "timeout_seconds": 12,
+  "min_sites": 10,
+  "min_channels": 40,
+  "max_active_sources": 3,
+  "workers": 8,
+  "failures_before_alert": 3,
+  "groups": {
+    "vod": [
+      {
+        "id": "liu673cn-main",
+        "name": "综合点播仓（main）",
+        "kind": "json",
+        "url": "https://raw.githubusercontent.com/liu673cn/box/main/m.json",
+        "priority": 1,
+        "failover_group": "liu673cn-box"
+      },
+      {
+        "id": "liu673cn-jsdelivr",
+        "name": "综合点播仓（CDN加速）",
+        "kind": "json",
+        "url": "https://fastly.jsdelivr.net/gh/liu673cn/box@main/m.json",
+        "priority": 2,
+        "failover_group": "liu673cn-box"
+      },
+      {
+        "id": "liu673cn-ghpages",
+        "name": "综合点播仓（Pages镜像）",
+        "kind": "json",
+        "url": "https://liu673cn.github.io/box/m.json",
+        "priority": 3,
+        "failover_group": "liu673cn-box",
+        "timeout_seconds": 8
+      },
+      {
+        "id": "selfhost-snapshot",
+        "name": "综合点播仓（自托管快照-兜底）",
+        "kind": "json",
+        "url": "https://raw.githubusercontent.com/ByShiNo/tvbox-mirror/main/mirror/m.json",
+        "priority": 4,
+        "failover_group": "liu673cn-box",
+        "timeout_seconds": 8,
+        "enabled": true,
+        "_note": "已启用并接入 ByShiNo/tvbox-mirror 自托管快照。这是抗整仓停更的关键兜底，详见 tvbox-mirror/README.md"
+      }
+    ],
+    "live": [
+      {
+        "id": "fanmingming-index",
+        "name": "央视卫视直播（IPv4-Index）",
+        "kind": "m3u",
+        "url": "https://raw.githubusercontent.com/fanmingming/live/main/tv/m3u/index.m3u",
+        "priority": 1,
+        "failover_group": "live-ipv4-index"
+      },
+      {
+        "id": "fanmingming-itv",
+        "name": "央视卫视直播（IPv4-iTV）",
+        "kind": "m3u",
+        "url": "https://raw.githubusercontent.com/fanmingming/live/main/tv/m3u/itv.m3u",
+        "priority": 2,
+        "failover_group": "live-ipv4-itv"
+      },
+      {
+        "id": "fanmingming-ipv6",
+        "name": "央视卫视直播（IPv6-可选）",
+        "kind": "m3u",
+        "url": "https://raw.githubusercontent.com/fanmingming/live/main/tv/m3u/ipv6.m3u",
+        "priority": 3,
+        "failover_group": "live-ipv6",
+        "_note": "仅有 IPv6 的家庭需要；默认无 IPv6 环境会全失败，如需移除直接删这条"
+      }
+    ]
+  }
+}
