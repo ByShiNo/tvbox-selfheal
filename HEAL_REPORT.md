@@ -1,6 +1,6 @@
 # TVBox 自愈运行报告
 
-- 运行时间：2026-11-23 19:19:52 +0800
+- 运行时间：2026-11-23 19:23:13 +0800
 - 本轮动作：**config.json 无变化（健康源与上一版一致）**
 - 当前激活点播源：https://raw.githubusercontent.com/liu673cn/box/main/m.json
 - 镜像组选择：liu673cn-main→liu673cn-box
@@ -11,13 +11,13 @@
 
 | 源 ID | 类型 | 优先级 | HTTP | 延迟ms | 结果 | 数量 | 说明 |
 |---|---|---|---|---|---|---|---|
-| liu673cn-main | json | 1 | 200 | 312 | 健康 | 234 | OK |
-| liu673cn-jsdelivr | json | 2 | 200 | 328 | 健康 | 234 | OK |
-| liu673cn-ghpages | json | 3 | 200 | 545 | 健康 | 234 | OK |
-| selfhost-snapshot | json | 4 | 200 | 297 | 健康 | 234 | OK |
-| fanmingming-index | m3u | 1 | 200 | 219 | 健康 | 94 | OK |
-| fanmingming-itv | m3u | 2 | 200 | 312 | 健康 | 189 | OK |
-| fanmingming-ipv6 | m3u | 3 | 200 | 219 | 健康 | 82 | OK |
+| liu673cn-main | json | 1 | 200 | 33 | 健康 | 234 | OK |
+| liu673cn-jsdelivr | json | 2 | 200 | 34 | 健康 | 234 | OK |
+| liu673cn-ghpages | json | 3 | 200 | 58 | 健康 | 234 | OK |
+| selfhost-snapshot | json | 4 | 200 | 37 | 健康 | 234 | OK |
+| fanmingming-index | m3u | 1 | 200 | 28 | 健康 | 94 | OK |
+| fanmingming-itv | m3u | 2 | 200 | 35 | 健康 | 189 | OK |
+| fanmingming-ipv6 | m3u | 3 | 200 | 27 | 健康 | 82 | OK |
 
 ## 机制说明
 
