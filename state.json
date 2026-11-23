@@ -1,0 +1,64 @@
+{
+  "consecutive_failures": 0,
+  "last_success": "2026-11-23 19:19:52 +0800",
+  "last_action": "config.json 无变化（健康源与上一版一致）",
+  "active_vod": [
+    "https://raw.githubusercontent.com/liu673cn/box/main/m.json"
+  ],
+  "active_live": [
+    "https://raw.githubusercontent.com/fanmingming/live/main/tv/m3u/index.m3u",
+    "https://raw.githubusercontent.com/fanmingming/live/main/tv/m3u/itv.m3u",
+    "https://raw.githubusercontent.com/fanmingming/live/main/tv/m3u/ipv6.m3u"
+  ],
+  "last_run": "2026-11-23 19:19:52 +0800",
+  "history": [
+    {
+      "time": "2026-11-23 19:19:52 +0800",
+      "action": "config.json 无变化（健康源与上一版一致）"
+    },
+    {
+      "time": "2026-11-23 18:41:24 +0800",
+      "action": "config.json 无变化（健康源与上一版一致）"
+    },
+    {
+      "time": "2026-11-23 18:25:35 +0800",
+      "action": "config.json 无变化（健康源与上一版一致）"
+    },
+    {
+      "time": "2026-11-23 18:23:48 +0800",
+      "action": "更新 config.json（源列表变化）"
+    },
+    {
+      "time": "2026-11-23 17:53:06 +0800",
+      "action": "config.json 无变化（健康源与上一版一致）"
+    },
+    {
+      "time": "2026-11-23 17:50:20 +0800",
+      "action": "更新 config.json（源列表变化）"
+    },
+    {
+      "time": "2026-11-23 17:50:06 +0800",
+      "action": "失效保护：保留上一版 config.json（本轮全部候选失效）"
+    },
+    {
+      "time": "2026-11-23 17:50:06 +0800",
+      "action": "更新 config.json（源列表变化）"
+    },
+    {
+      "time": "2026-11-23 17:49:37 +0800",
+      "action": "更新 config.json（源列表变化）"
+    },
+    {
+      "time": "2026-11-23 17:47:43 +0800",
+      "action": "更新 config.json（源列表变化）"
+    }
+  ],
+  "last_fail": "2026-11-23 17:50:06 +0800",
+  "needs_attention": false,
+  "baseline_counts": {
+    "liu673cn-main": 234,
+    "liu673cn-jsdelivr": 234,
+    "liu673cn-ghpages": 234,
+    "selfhost-snapshot": 234
+  }
+}
