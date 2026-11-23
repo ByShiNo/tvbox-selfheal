@@ -1,5 +1,10 @@
 # TVBox / 影视TV 自愈系统 v2（agent 编队整合版）
 
+> **已部署实例（直接用）**：电视端配置地址填
+> `https://raw.githubusercontent.com/ByShiNo/tvbox-selfheal/main/config.json`
+> 国内慢则填 `https://fastly.jsdelivr.net/gh/ByShiNo/tvbox-selfheal@main/config.json`
+> 兜底快照仓：`https://github.com/ByShiNo/tvbox-mirror`（两个仓均 Public、Actions active、已实测云端自愈 success）。
+
 > 目标：电视端只配置一次，之后订阅失效、源挂掉、线路切换、故障告警全部自动完成，你人不在、电脑不在也能自愈。
 >
 > 本版由 5 个审查 agent（源池/直播/代码/部署/跨session整合）并行审查 + 实测证据修订，副本在 `tvbox-selfheal.bak-20261123/`。
