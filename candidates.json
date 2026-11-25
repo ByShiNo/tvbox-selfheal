@@ -1,5 +1,5 @@
 {
-  "_说明": "候选源清单。自愈脚本定时探测这些源，健康的写入 config.json。priority 越小越优先；电视端只填最终 config.json 的 raw 地址。2026-11-25 实测：raw.githubusercontent.com 在国内电信网络 TLS 被 reset，全部改为国内可达链路（点播 github.io / 直播 jsdelivr）。",
+  "_说明": "候选源清单。自愈脚本定时探测这些源，健康的写入 config.json。priority 越小越优先；电视端只填最终 config.json 的 raw 地址。2026-11-25 实测：raw.githubusercontent.com 在国内电信网络 TLS 被 reset，全部改为国内可达链路（点播 github.io / 直播 jsdelivr）。v2 在 v1 基础上经 probe_sites.py 二次确认又剔除 12 个直连失效采集站，210 站全健康。",
   "timeout_seconds": 12,
   "min_sites": 10,
   "min_channels": 40,
@@ -9,20 +9,29 @@
   "groups": {
     "vod": [
       {
-        "id": "clean-mirror",
-        "name": "综合点播仓（清洗版-剔除爬虫坏站-主源）",
+        "id": "clean-mirror-v2",
+        "name": "综合点播仓（清洗版v2-剔除爬虫坏站+失效采集站-主源）",
         "kind": "json",
-        "url": "https://fastly.jsdelivr.net/gh/ByShiNo/tvbox-mirror@main/mirror/clean-m.json",
+        "url": "https://fastly.jsdelivr.net/gh/ByShiNo/tvbox-mirror@main/mirror/clean-m-v2.json",
         "priority": 1,
         "failover_group": "liu673cn-box",
-        "_note": "2026-11-25 实测：原234站里11个站爬虫类缺失(Juqq/Ying等)，切换必报爬虫加载失败。清洗版剔除这11站(剩223)，并把jar/api相对路径改绝对URL(raw.liucn.cc国内可达)。这是解决切换源失败的主源。"
+        "_note": "v2(210站)：v1剔除11个爬虫坏站后，probe_sites.py 又检出12个直连采集站404/DNS失败，二次重试确认后剔除。全站 Java 爬虫类经全局jar校验均存在，切换不再报爬虫加载失败。"
+      },
+      {
+        "id": "clean-mirror-v1",
+        "name": "综合点播仓（清洗版v1-223站-兜底）",
+        "kind": "json",
+        "url": "https://fastly.jsdelivr.net/gh/ByShiNo/tvbox-mirror@main/mirror/clean-m.json",
+        "priority": 2,
+        "failover_group": "liu673cn-box",
+        "_note": "v2 失效时退回 v1（223站，仅剔除爬虫坏站，含12个可能失效的直连站）。"
       },
       {
         "id": "liu673cn-ghpages",
-        "name": "综合点播仓（原版GitHub Pages-兜底）",
+        "name": "综合点播仓（原版GitHub Pages-末级兜底）",
         "kind": "json",
         "url": "https://liu673cn.github.io/box/m.json",
-        "priority": 2,
+        "priority": 3,
         "failover_group": "liu673cn-box",
         "_note": "原版234站含11个爬虫坏站，仅作清洗版失效时的兜底。"
       },
