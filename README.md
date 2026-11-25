@@ -1,8 +1,8 @@
 # TVBox / 影视TV 自愈系统 v2（agent 编队整合版）
 
-> **已部署实例（直接用）**：电视端配置地址填
-> `https://raw.githubusercontent.com/ByShiNo/tvbox-selfheal/main/config.json`
-> 国内慢则填 `https://fastly.jsdelivr.net/gh/ByShiNo/tvbox-selfheal@main/config.json`
+> **已部署实例（直接用）**：电视端配置地址**填这个（国内电信网络实测可用）**
+> `https://fastly.jsdelivr.net/gh/ByShiNo/tvbox-selfheal@main/config.json`
+> ⚠ 不要用 `raw.githubusercontent.com` 地址：2026-11-25 实测国内电信网络对该域名 TLS 握手直接 reset（HTTP=000），电视端会卡在加载配置这一步。jsdelivr 链路实测 HTTP200 / 0.38s。
 > 兜底快照仓：`https://github.com/ByShiNo/tvbox-mirror`（两个仓均 Public、Actions active、已实测云端自愈 success）。
 
 > 目标：电视端只配置一次，之后订阅失效、源挂掉、线路切换、故障告警全部自动完成，你人不在、电脑不在也能自愈。
@@ -63,14 +63,11 @@ gh workflow run heal.yml    # 手动触发一次，确认 Actions 日志末尾 g
 ```
 
 ### 4. 电视端填地址（只做一次）
-影视TV App → 设置 → 配置地址 → 新增，填：
-```
-https://raw.githubusercontent.com/<你的用户名>/<你的仓库>/main/config.json
-```
-国内拉取慢时改用 CDN（仅对公开仓有效）：
+影视TV App → 设置 → 配置地址 → 新增，填 CDN 地址（**国内网络首选，实测可用**）：
 ```
 https://fastly.jsdelivr.net/gh/<你的用户名>/<你的仓库>@main/config.json
 ```
+⚠ 不要用 `raw.githubusercontent.com`：2026-11-25 实测国内电信网络对该域名 TLS 握手 reset（HTTP=000），电视端第一步拉配置就会卡死。jsdelivr 对公开仓生效，实测 0.38s。
 验证：`curl -sS -o /dev/null -w %{http_code} <上面的地址>` 必须返回 200。
 
 ### 5. APK 装到电视（一次性）
