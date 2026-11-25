@@ -9,24 +9,33 @@
   "groups": {
     "vod": [
       {
-        "id": "liu673cn-ghpages",
-        "name": "综合点播仓（GitHub Pages 主源-国内可达）",
+        "id": "clean-mirror",
+        "name": "综合点播仓（清洗版-剔除爬虫坏站-主源）",
         "kind": "json",
-        "url": "https://liu673cn.github.io/box/m.json",
+        "url": "https://fastly.jsdelivr.net/gh/ByShiNo/tvbox-mirror@main/mirror/clean-m.json",
         "priority": 1,
         "failover_group": "liu673cn-box",
-        "_note": "国内电信网络实测 HTTP200 0.77s；spider=raw.liucn.cc/box/fty.jar 可达，端到端加载234站点并实测可播。设为主源。"
+        "_note": "2026-11-25 实测：原234站里11个站爬虫类缺失(Juqq/Ying等)，切换必报爬虫加载失败。清洗版剔除这11站(剩223)，并把jar/api相对路径改绝对URL(raw.liucn.cc国内可达)。这是解决切换源失败的主源。"
+      },
+      {
+        "id": "liu673cn-ghpages",
+        "name": "综合点播仓（原版GitHub Pages-兜底）",
+        "kind": "json",
+        "url": "https://liu673cn.github.io/box/m.json",
+        "priority": 2,
+        "failover_group": "liu673cn-box",
+        "_note": "原版234站含11个爬虫坏站，仅作清洗版失效时的兜底。"
       },
       {
         "id": "selfhost-snapshot",
-        "name": "综合点播仓（自托管快照-兜底）",
+        "name": "综合点播仓（自托管快照-末级兜底）",
         "kind": "json",
         "url": "https://fastly.jsdelivr.net/gh/ByShiNo/tvbox-mirror@main/mirror/m.json",
-        "priority": 2,
+        "priority": 3,
         "failover_group": "liu673cn-box",
         "timeout_seconds": 8,
         "enabled": true,
-        "_note": "主源整仓消失时兜底。mirror/fty.jar 已随快照入库，保证 spider 相对路径在 jsdelivr 链路可达。"
+        "_note": "主源整仓消失时兜底。mirror/fty.jar 已随快照入库。"
       },
       {
         "id": "liu673cn-jsdelivr",
