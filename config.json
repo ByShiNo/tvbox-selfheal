@@ -1,39 +1,39 @@
 {
   "subs": [
-    "https://raw.githubusercontent.com/liu673cn/box/main/m.json"
+    "https://liu673cn.github.io/box/m.json"
   ],
   "lives": [
     {
       "name": "央视卫视直播（IPv4-Index）",
       "type": 1,
-      "url": "https://raw.githubusercontent.com/fanmingming/live/main/tv/m3u/index.m3u",
+      "url": "https://fastly.jsdelivr.net/gh/fanmingming/live@main/tv/m3u/index.m3u",
       "searchable": 0,
       "changeable": 0
     },
     {
       "name": "央视卫视直播（IPv4-iTV）",
       "type": 1,
-      "url": "https://raw.githubusercontent.com/fanmingming/live/main/tv/m3u/itv.m3u",
+      "url": "https://fastly.jsdelivr.net/gh/fanmingming/live@main/tv/m3u/itv.m3u",
       "searchable": 0,
       "changeable": 0
     },
     {
       "name": "央视卫视直播（IPv6-可选）",
       "type": 1,
-      "url": "https://raw.githubusercontent.com/fanmingming/live/main/tv/m3u/ipv6.m3u",
+      "url": "https://fastly.jsdelivr.net/gh/fanmingming/live@main/tv/m3u/ipv6.m3u",
       "searchable": 0,
       "changeable": 0
     }
   ],
   "_meta": {
     "generated_by": "tvbox-selfheal-v2",
-    "updated": "2026-11-23 18:23:48 +0800",
+    "updated": "2026-11-25 21:08:39 +0800",
     "active_vod": [
       {
-        "id": "liu673cn-main",
+        "id": "liu673cn-ghpages",
         "group": "liu673cn-box",
         "count": 234,
-        "latency_ms": 312
+        "latency_ms": 578
       }
     ],
     "active_live": [
@@ -41,32 +41,28 @@
         "id": "fanmingming-index",
         "group": "live-ipv4-index",
         "count": 94,
-        "latency_ms": 234
+        "latency_ms": 438
       },
       {
         "id": "fanmingming-itv",
         "group": "live-ipv4-itv",
         "count": 189,
-        "latency_ms": 312
+        "latency_ms": 375
       },
       {
         "id": "fanmingming-ipv6",
         "group": "live-ipv6",
         "count": 82,
-        "latency_ms": 235
+        "latency_ms": 311
       }
     ],
     "all_healthy_vod": [
       {
-        "id": "liu673cn-main",
-        "count": 234
-      },
-      {
-        "id": "liu673cn-jsdelivr",
-        "count": 234
-      },
-      {
         "id": "liu673cn-ghpages",
+        "count": 234
+      },
+      {
+        "id": "selfhost-snapshot",
         "count": 234
       }
     ],
