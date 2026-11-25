@@ -1,9 +1,9 @@
 # TVBox 自愈运行报告
 
-- 运行时间：2026-11-25 21:32:33 +0800
+- 运行时间：2026-11-25 22:06:12 +0800
 - 本轮动作：**更新 config.json（源列表变化）**
-- 当前激活点播源：https://fastly.jsdelivr.net/gh/ByShiNo/tvbox-mirror@main/mirror/clean-m.json
-- 镜像组选择：clean-mirror→liu673cn-box
+- 当前激活点播源：https://fastly.jsdelivr.net/gh/ByShiNo/tvbox-mirror@main/mirror/clean-m-v2.json
+- 镜像组选择：clean-mirror-v2→liu673cn-box
 - 当前激活直播源：https://fastly.jsdelivr.net/gh/fanmingming/live@main/tv/m3u/index.m3u, https://fastly.jsdelivr.net/gh/fanmingming/live@main/tv/m3u/itv.m3u, https://fastly.jsdelivr.net/gh/fanmingming/live@main/tv/m3u/ipv6.m3u
 - 连续失败轮次：0
 
@@ -11,12 +11,13 @@
 
 | 源 ID | 类型 | 优先级 | HTTP | 延迟ms | 结果 | 数量 | 说明 |
 |---|---|---|---|---|---|---|---|
-| clean-mirror | json | 1 | 200 | 531 | 健康 | 223 | OK |
-| liu673cn-ghpages | json | 2 | 200 | 1797 | 健康 | 234 | OK |
-| selfhost-snapshot | json | 3 | 200 | 1078 | 健康 | 234 | OK |
-| fanmingming-index | m3u | 1 | 200 | 484 | 健康 | 94 | OK |
-| fanmingming-itv | m3u | 2 | 200 | 484 | 健康 | 189 | OK |
-| fanmingming-ipv6 | m3u | 3 | 200 | 390 | 健康 | 82 | OK |
+| clean-mirror-v2 | json | 1 | 200 | 421 | 健康 | 210 | OK |
+| clean-mirror-v1 | json | 2 | 200 | 563 | 健康 | 223 | OK |
+| selfhost-snapshot | json | 3 | 200 | 452 | 健康 | 234 | OK |
+| liu673cn-ghpages | json | 3 | 200 | 688 | 健康 | 234 | OK |
+| fanmingming-index | m3u | 1 | 200 | 406 | 健康 | 94 | OK |
+| fanmingming-itv | m3u | 2 | 200 | 1031 | 健康 | 189 | OK |
+| fanmingming-ipv6 | m3u | 3 | 200 | 500 | 健康 | 82 | OK |
 
 ## 机制说明
 
