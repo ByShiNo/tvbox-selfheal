@@ -1,5 +1,5 @@
 {
-  "_说明": "候选源清单。自愈脚本定时探测这些源，健康的写入 config.json。priority 越小越优先；电视端只填最终 config.json 的 raw 地址。2026-11-23 经 agent 编队审查 + 实测修订。",
+  "_说明": "候选源清单。自愈脚本定时探测这些源，健康的写入 config.json。priority 越小越优先；电视端只填最终 config.json 的 raw 地址。2026-11-25 实测：raw.githubusercontent.com 在国内电信网络 TLS 被 reset，全部改为国内可达链路（点播 github.io / 直播 jsdelivr）。",
   "timeout_seconds": 12,
   "min_sites": 10,
   "min_channels": 40,
@@ -9,40 +9,44 @@
   "groups": {
     "vod": [
       {
-        "id": "liu673cn-main",
-        "name": "综合点播仓（main）",
-        "kind": "json",
-        "url": "https://raw.githubusercontent.com/liu673cn/box/main/m.json",
-        "priority": 1,
-        "failover_group": "liu673cn-box"
-      },
-      {
-        "id": "liu673cn-jsdelivr",
-        "name": "综合点播仓（CDN加速）",
-        "kind": "json",
-        "url": "https://fastly.jsdelivr.net/gh/liu673cn/box@main/m.json",
-        "priority": 2,
-        "failover_group": "liu673cn-box"
-      },
-      {
         "id": "liu673cn-ghpages",
-        "name": "综合点播仓（Pages镜像）",
+        "name": "综合点播仓（GitHub Pages 主源-国内可达）",
         "kind": "json",
         "url": "https://liu673cn.github.io/box/m.json",
-        "priority": 3,
+        "priority": 1,
         "failover_group": "liu673cn-box",
-        "timeout_seconds": 8
+        "_note": "国内电信网络实测 HTTP200 0.77s；spider=raw.liucn.cc/box/fty.jar 可达，端到端加载234站点并实测可播。设为主源。"
       },
       {
         "id": "selfhost-snapshot",
         "name": "综合点播仓（自托管快照-兜底）",
         "kind": "json",
-        "url": "https://raw.githubusercontent.com/ByShiNo/tvbox-mirror/main/mirror/m.json",
-        "priority": 4,
+        "url": "https://fastly.jsdelivr.net/gh/ByShiNo/tvbox-mirror@main/mirror/m.json",
+        "priority": 2,
         "failover_group": "liu673cn-box",
         "timeout_seconds": 8,
         "enabled": true,
-        "_note": "已启用并接入 ByShiNo/tvbox-mirror 自托管快照。这是抗整仓停更的关键兜底，详见 tvbox-mirror/README.md"
+        "_note": "主源整仓消失时兜底。mirror/fty.jar 已随快照入库，保证 spider 相对路径在 jsdelivr 链路可达。"
+      },
+      {
+        "id": "liu673cn-jsdelivr",
+        "name": "综合点播仓（jsdelivr-留档禁用）",
+        "kind": "json",
+        "url": "https://fastly.jsdelivr.net/gh/liu673cn/box@main/m.json",
+        "priority": 3,
+        "failover_group": "liu673cn-box",
+        "enabled": false,
+        "_note": "m.json 可达，但 spider=./fty.jar 在该仓 jsdelivr 链路返回403（文件不在git仓库），端到端不可用；禁用避免被选入 config.json。"
+      },
+      {
+        "id": "liu673cn-main-raw",
+        "name": "综合点播仓（raw-国内不可达-留档禁用）",
+        "kind": "json",
+        "url": "https://raw.githubusercontent.com/liu673cn/box/main/m.json",
+        "priority": 9,
+        "failover_group": "liu673cn-box",
+        "enabled": false,
+        "_note": "raw.githubusercontent.com 在国内电信网络 TLS 握手被 reset（HTTP000），禁用。"
       }
     ],
     "live": [
@@ -50,26 +54,28 @@
         "id": "fanmingming-index",
         "name": "央视卫视直播（IPv4-Index）",
         "kind": "m3u",
-        "url": "https://raw.githubusercontent.com/fanmingming/live/main/tv/m3u/index.m3u",
+        "url": "https://fastly.jsdelivr.net/gh/fanmingming/live@main/tv/m3u/index.m3u",
         "priority": 1,
-        "failover_group": "live-ipv4-index"
+        "failover_group": "live-ipv4-index",
+        "_note": "由 raw 改 jsdelivr，国内实测 HTTP200 0.59s。"
       },
       {
         "id": "fanmingming-itv",
         "name": "央视卫视直播（IPv4-iTV）",
         "kind": "m3u",
-        "url": "https://raw.githubusercontent.com/fanmingming/live/main/tv/m3u/itv.m3u",
+        "url": "https://fastly.jsdelivr.net/gh/fanmingming/live@main/tv/m3u/itv.m3u",
         "priority": 2,
-        "failover_group": "live-ipv4-itv"
+        "failover_group": "live-ipv4-itv",
+        "_note": "由 raw 改 jsdelivr，国内实测 HTTP200 0.66s。"
       },
       {
         "id": "fanmingming-ipv6",
         "name": "央视卫视直播（IPv6-可选）",
         "kind": "m3u",
-        "url": "https://raw.githubusercontent.com/fanmingming/live/main/tv/m3u/ipv6.m3u",
+        "url": "https://fastly.jsdelivr.net/gh/fanmingming/live@main/tv/m3u/ipv6.m3u",
         "priority": 3,
         "failover_group": "live-ipv6",
-        "_note": "仅有 IPv6 的家庭需要；默认无 IPv6 环境会全失败，如需移除直接删这条"
+        "_note": "由 raw 改 jsdelivr，国内实测 HTTP200 0.64s。仅有 IPv6 的家庭需要。"
       }
     ]
   }
