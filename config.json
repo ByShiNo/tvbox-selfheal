@@ -1,6 +1,6 @@
 {
   "subs": [
-    "https://fastly.jsdelivr.net/gh/ByShiNo/tvbox-mirror@main/mirror/clean-m.json"
+    "https://fastly.jsdelivr.net/gh/ByShiNo/tvbox-mirror@main/mirror/clean-m-v2.json"
   ],
   "lives": [
     {
@@ -27,13 +27,13 @@
   ],
   "_meta": {
     "generated_by": "tvbox-selfheal-v2",
-    "updated": "2026-11-25 21:32:33 +0800",
+    "updated": "2026-11-25 22:06:12 +0800",
     "active_vod": [
       {
-        "id": "clean-mirror",
+        "id": "clean-mirror-v2",
         "group": "liu673cn-box",
-        "count": 223,
-        "latency_ms": 531
+        "count": 210,
+        "latency_ms": 421
       }
     ],
     "active_live": [
@@ -41,32 +41,36 @@
         "id": "fanmingming-index",
         "group": "live-ipv4-index",
         "count": 94,
-        "latency_ms": 484
+        "latency_ms": 406
       },
       {
         "id": "fanmingming-itv",
         "group": "live-ipv4-itv",
         "count": 189,
-        "latency_ms": 484
+        "latency_ms": 1031
       },
       {
         "id": "fanmingming-ipv6",
         "group": "live-ipv6",
         "count": 82,
-        "latency_ms": 390
+        "latency_ms": 500
       }
     ],
     "all_healthy_vod": [
       {
-        "id": "clean-mirror",
+        "id": "clean-mirror-v2",
+        "count": 210
+      },
+      {
+        "id": "clean-mirror-v1",
         "count": 223
       },
       {
-        "id": "liu673cn-ghpages",
+        "id": "selfhost-snapshot",
         "count": 234
       },
       {
-        "id": "selfhost-snapshot",
+        "id": "liu673cn-ghpages",
         "count": 234
       }
     ],
