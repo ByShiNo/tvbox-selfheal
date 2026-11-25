@@ -39,3 +39,11 @@ jobs:
             git commit -m "chore: 自愈更新配置 $(date -u +%Y-%m-%dT%H:%M:%SZ)"
             git push || { echo "PUSH_FAILED"; exit 1; }
           fi
+
+      # jsdelivr 默认缓存 config.json 12 小时(s-maxage=43200)，会导致电视端
+      # 在源切换后最长 12 小时仍拉到旧配置。每轮提交后主动清 CDN 缓存。
+      - name: 刷新 jsdelivr CDN 缓存
+        if: always()
+        run: |
+          curl -fsS --max-time 30 "https://purge.jsdelivr.net/gh/${GITHUB_REPOSITORY}@main/config.json" || echo "purge 失败，不影响本轮结果"
+          curl -fsS --max-time 30 "https://purge.jsdelivr.net/gh/ByShiNo/tvbox-mirror@main/mirror/m.json" || echo "purge 失败，不影响本轮结果"
