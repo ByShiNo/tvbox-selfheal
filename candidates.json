@@ -9,22 +9,23 @@
   "groups": {
     "vod": [
       {
-        "id": "clean-mirror-v2",
-        "name": "综合点播仓（清洗版v2-剔除爬虫坏站+失效采集站-主源）",
+        "id": "clean-mirror-v3",
+        "name": "综合点播仓（网速优化版v3-站点按延迟排序-主源）",
         "kind": "json",
-        "url": "https://fastly.jsdelivr.net/gh/ByShiNo/tvbox-mirror@main/mirror/clean-m-v2.json",
+        "url": "https://fastly.jsdelivr.net/gh/ByShiNo/tvbox-mirror@main/mirror/clean-m-v3.json",
         "priority": 1,
         "failover_group": "liu673cn-box",
-        "_note": "v2(210站)：v1剔除11个爬虫坏站后，probe_sites.py 又检出12个直连采集站404/DNS失败，二次重试确认后剔除。全站 Java 爬虫类经全局jar校验均存在，切换不再报爬虫加载失败。"
+        "_note": "v3(210站)：在v2基础上按net_benchmark.py实测延迟重排，53个HTTP直连站按响应速度升序(230ms百忙无果/242ms视觉影院...慢站靠后)，搜索/切源优先命中快站。交错12轮实测中位484ms优于v2的628ms。",
+        "timeout_seconds": 12
       },
       {
-        "id": "clean-mirror-v1",
-        "name": "综合点播仓（清洗版v1-223站-兜底）",
+        "id": "clean-mirror-v2",
+        "name": "综合点播仓（清洗版v2-210站兜底）",
         "kind": "json",
-        "url": "https://fastly.jsdelivr.net/gh/ByShiNo/tvbox-mirror@main/mirror/clean-m.json",
+        "url": "https://fastly.jsdelivr.net/gh/ByShiNo/tvbox-mirror@main/mirror/clean-m-v2.json",
         "priority": 2,
         "failover_group": "liu673cn-box",
-        "_note": "v2 失效时退回 v1（223站，仅剔除爬虫坏站，含12个可能失效的直连站）。"
+        "_note": "v3 失效时退回 v2（210站，未重排）。v1剔除11个爬虫坏站后又剔除12个失效采集站。"
       },
       {
         "id": "liu673cn-ghpages",
@@ -33,7 +34,7 @@
         "url": "https://liu673cn.github.io/box/m.json",
         "priority": 3,
         "failover_group": "liu673cn-box",
-        "_note": "原版234站含11个爬虫坏站，仅作清洗版失效时的兜底。"
+        "_note": "原版234站含11个爬虫坏站，10轮中位1100ms最慢，仅作末级兜底。"
       },
       {
         "id": "selfhost-snapshot",
