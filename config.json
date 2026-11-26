@@ -4,71 +4,54 @@
   ],
   "lives": [
     {
-      "name": "精选实测直播源",
-      "url": "https://byshino.github.io/tvbox-mirror/live-good.m3u"
+      "name": "实测可用直播源(390频道/714线路)",
+      "type": 1,
+      "url": "https://byshino.github.io/tvbox-mirror/live-good.m3u",
+      "searchable": 0,
+      "changeable": 0
     }
   ],
   "_meta": {
     "generated_by": "tvbox-selfheal-v2",
-    "updated": "2026-11-25 22:17:41 +0800",
+    "updated": "2026-11-26 14:53:54 +0800",
     "active_vod": [
       {
-        "id": "clean-mirror-v3",
+        "id": "clean-selfhost",
         "group": "liu673cn-box",
-        "count": 210,
-        "latency_ms": 452
+        "count": 200,
+        "latency_ms": 328
       }
     ],
     "active_live": [
       {
-        "id": "fanmingming-index",
-        "group": "live-ipv4-index",
-        "count": 94,
+        "id": "live-good",
+        "group": "live-good-group",
+        "count": 714,
         "latency_ms": 296
-      },
-      {
-        "id": "fanmingming-itv",
-        "group": "live-ipv4-itv",
-        "count": 189,
-        "latency_ms": 436
-      },
-      {
-        "id": "fanmingming-ipv6",
-        "group": "live-ipv6",
-        "count": 82,
-        "latency_ms": 2077
       }
     ],
     "all_healthy_vod": [
       {
-        "id": "clean-mirror-v3",
-        "count": 210
+        "id": "clean-selfhost",
+        "count": 200
       },
       {
         "id": "clean-mirror-v2",
         "count": 210
       },
       {
-        "id": "selfhost-snapshot",
+        "id": "liu673cn-ghpages",
         "count": 234
       },
       {
-        "id": "liu673cn-ghpages",
+        "id": "selfhost-snapshot",
         "count": 234
       }
     ],
     "all_healthy_live": [
       {
-        "id": "fanmingming-index",
-        "count": 94
-      },
-      {
-        "id": "fanmingming-itv",
-        "count": 189
-      },
-      {
-        "id": "fanmingming-ipv6",
-        "count": 82
+        "id": "live-good",
+        "count": 714
       }
     ],
     "note": "本文件由云端定时任务自动生成，请勿手动编辑；电视端固定填此地址。"
