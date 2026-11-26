@@ -1,15 +1,19 @@
 {
   "consecutive_failures": 0,
-  "last_success": "2026-11-26 14:53:54 +0800",
-  "last_action": "更新 config.json（源列表变化）",
+  "last_success": "2026-11-26 21:56:21 +0800",
+  "last_action": "config.json 无变化（健康源与上一版一致）",
   "active_vod": [
     "https://byshino.github.io/tvbox-mirror/clean-selfhost.json"
   ],
   "active_live": [
     "https://byshino.github.io/tvbox-mirror/live-good.m3u"
   ],
-  "last_run": "2026-11-26 14:53:54 +0800",
+  "last_run": "2026-11-26 21:56:21 +0800",
   "history": [
+    {
+      "time": "2026-11-26 21:56:21 +0800",
+      "action": "config.json 无变化（健康源与上一版一致）"
+    },
     {
       "time": "2026-11-26 14:53:54 +0800",
       "action": "更新 config.json（源列表变化）"
