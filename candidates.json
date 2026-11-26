@@ -1,5 +1,5 @@
 {
-  "_说明": "候选源清单。自愈脚本定时探测这些源，健康的写入 config.json。priority 越小越优先；电视端只填最终 config.json 的 raw 地址。2026-11-25 实测：raw.githubusercontent.com 在国内电信网络 TLS 被 reset，全部改为国内可达链路（点播 github.io / 直播 jsdelivr）。v2 在 v1 基础上经 probe_sites.py 二次确认又剔除 12 个直连失效采集站，210 站全健康。",
+  "_说明": "2026-11-26根治版: 点播用自包含配置(相对路径+镜像资源+github.io), 直播用实测可用源。绝对URL配置和fanmingming源已禁用。",
   "timeout_seconds": 12,
   "min_sites": 10,
   "min_channels": 40,
@@ -9,14 +9,24 @@
   "groups": {
     "vod": [
       {
+        "id": "clean-selfhost",
+        "name": "自包含配置(相对路径+镜像资源-github.io-主源)",
+        "kind": "json",
+        "url": "https://byshino.github.io/tvbox-mirror/clean-selfhost.json",
+        "priority": 1,
+        "failover_group": "liu673cn-box",
+        "_note": "根治版: 200站, 资源目录镜像到仓库+GitHub Pages托管, 配置用相对路径, jar/js可达, 换源不报爬虫加载失败"
+      },
+      {
         "id": "clean-mirror-v3",
         "name": "综合点播仓（网速优化版v3-站点按延迟排序-主源）",
         "kind": "json",
         "url": "https://fastly.jsdelivr.net/gh/ByShiNo/tvbox-mirror@main/mirror/clean-m-v3.json",
         "priority": 1,
         "failover_group": "liu673cn-box",
-        "_note": "v3(210站)：在v2基础上按net_benchmark.py实测延迟重排，53个HTTP直连站按响应速度升序(230ms百忙无果/242ms视觉影院...慢站靠后)，搜索/切源优先命中快站。交错12轮实测中位484ms优于v2的628ms。",
-        "timeout_seconds": 12
+        "_note": "已废弃: 绝对路径配置破坏drpy2相对import链(pdfh未定义)+jsdelivr的jar 403。改用clean-selfhost。",
+        "timeout_seconds": 12,
+        "enabled": false
       },
       {
         "id": "clean-mirror-v2",
@@ -70,13 +80,23 @@
     ],
     "live": [
       {
+        "id": "live-good",
+        "name": "实测可用直播源(390频道/714线路)",
+        "kind": "m3u",
+        "url": "https://byshino.github.io/tvbox-mirror/live-good.m3u",
+        "priority": 1,
+        "failover_group": "live-good-group",
+        "_note": "从2473频道curl硬探测筛出967可用,每频道最多3线路"
+      },
+      {
         "id": "fanmingming-index",
         "name": "央视卫视直播（IPv4-Index）",
         "kind": "m3u",
         "url": "https://fastly.jsdelivr.net/gh/fanmingming/live@main/tv/m3u/index.m3u",
         "priority": 1,
         "failover_group": "live-ipv4-index",
-        "_note": "由 raw 改 jsdelivr，国内实测 HTTP200 0.59s。"
+        "_note": "已失效(2026实测index仅1/93可用,itv全403)",
+        "enabled": false
       },
       {
         "id": "fanmingming-itv",
@@ -85,7 +105,8 @@
         "url": "https://fastly.jsdelivr.net/gh/fanmingming/live@main/tv/m3u/itv.m3u",
         "priority": 2,
         "failover_group": "live-ipv4-itv",
-        "_note": "由 raw 改 jsdelivr，国内实测 HTTP200 0.66s。"
+        "_note": "已失效(2026实测index仅1/93可用,itv全403)",
+        "enabled": false
       },
       {
         "id": "fanmingming-ipv6",
@@ -94,7 +115,8 @@
         "url": "https://fastly.jsdelivr.net/gh/fanmingming/live@main/tv/m3u/ipv6.m3u",
         "priority": 3,
         "failover_group": "live-ipv6",
-        "_note": "由 raw 改 jsdelivr，国内实测 HTTP200 0.64s。仅有 IPv6 的家庭需要。"
+        "_note": "已失效(2026实测index仅1/93可用,itv全403)",
+        "enabled": false
       }
     ]
   },
