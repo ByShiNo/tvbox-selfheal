@@ -97,5 +97,15 @@
         "_note": "由 raw 改 jsdelivr，国内实测 HTTP200 0.64s。仅有 IPv6 的家庭需要。"
       }
     ]
-  }
+  },
+  "candidates": [
+    {
+      "name": "live-good",
+      "type": "live",
+      "url": "https://fastly.jsdelivr.net/gh/ByShiNo/tvbox-mirror@main/mirror/live-good.m3u",
+      "enabled": true,
+      "priority": 1,
+      "_note": "实测可用直播源, 每频道最多3线路"
+    }
+  ]
 }
