@@ -1,6 +1,6 @@
 {
   "subs": [
-    "https://fastly.jsdelivr.net/gh/ByShiNo/tvbox-mirror@main/mirror/clean-m-v3.json"
+    "https://fastly.jsdelivr.net/gh/ByShiNo/tvbox-mirror@main/mirror/clean-selfhost.json"
   ],
   "lives": [
     {
