@@ -1,11 +1,11 @@
 {
   "subs": [
-    "https://fastly.jsdelivr.net/gh/ByShiNo/tvbox-mirror@main/mirror/clean-selfhost.json"
+    "https://byshino.github.io/tvbox-mirror/clean-selfhost.json"
   ],
   "lives": [
     {
       "name": "精选实测直播源",
-      "url": "https://fastly.jsdelivr.net/gh/ByShiNo/tvbox-mirror@main/mirror/live-good.m3u"
+      "url": "https://byshino.github.io/tvbox-mirror/live-good.m3u"
     }
   ],
   "_meta": {
