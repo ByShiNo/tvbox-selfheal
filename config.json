@@ -4,25 +4,8 @@
   ],
   "lives": [
     {
-      "name": "央视卫视直播（IPv4-Index）",
-      "type": 1,
-      "url": "https://fastly.jsdelivr.net/gh/fanmingming/live@main/tv/m3u/index.m3u",
-      "searchable": 0,
-      "changeable": 0
-    },
-    {
-      "name": "央视卫视直播（IPv4-iTV）",
-      "type": 1,
-      "url": "https://fastly.jsdelivr.net/gh/fanmingming/live@main/tv/m3u/itv.m3u",
-      "searchable": 0,
-      "changeable": 0
-    },
-    {
-      "name": "央视卫视直播（IPv6-可选）",
-      "type": 1,
-      "url": "https://fastly.jsdelivr.net/gh/fanmingming/live@main/tv/m3u/ipv6.m3u",
-      "searchable": 0,
-      "changeable": 0
+      "name": "精选实测直播源",
+      "url": "https://fastly.jsdelivr.net/gh/ByShiNo/tvbox-mirror@main/mirror/live-good.m3u"
     }
   ],
   "_meta": {
