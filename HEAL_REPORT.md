@@ -1,6 +1,6 @@
 # TVBox 自愈运行报告
 
-- 运行时间：2026-11-27 08:37:24 +0800
+- 运行时间：2026-11-27 21:54:54 +0800
 - 本轮动作：**config.json 无变化（健康源与上一版一致）**
 - 当前激活点播源：https://byshino.github.io/tvbox-mirror/clean-selfhost.json
 - 镜像组选择：clean-selfhost→liu673cn-box
@@ -11,11 +11,11 @@
 
 | 源 ID | 类型 | 优先级 | HTTP | 延迟ms | 结果 | 数量 | 说明 |
 |---|---|---|---|---|---|---|---|
-| clean-selfhost | json | 1 | 200 | 37 | 健康 | 200 | OK |
-| clean-mirror-v2 | json | 2 | 200 | 35 | 健康 | 210 | OK |
-| selfhost-snapshot | json | 3 | 200 | 32 | 健康 | 234 | OK |
-| liu673cn-ghpages | json | 3 | 200 | 62 | 健康 | 234 | OK |
-| live-good | m3u | 1 | 200 | 28 | 健康 | 714 | OK |
+| clean-selfhost | json | 1 | 200 | 23 | 健康 | 200 | OK |
+| clean-mirror-v2 | json | 2 | 200 | 207 | 健康 | 210 | OK |
+| liu673cn-ghpages | json | 3 | 200 | 28 | 健康 | 234 | OK |
+| selfhost-snapshot | json | 3 | 200 | 369 | 健康 | 234 | OK |
+| live-good | m3u | 1 | 200 | 93 | 健康 | 714 | OK |
 
 ## 机制说明
 
